@@ -22,28 +22,28 @@ JUNIPER_VERSION = JUNIPER_TAG.lstrip("v")
 # most recently, regardless of which platform it's for). Windows and Linux
 # now ship from one desktop tag, so they share DESKTOP_TAG.
 RELEASE_URLS = [
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/Cinqic-Calculator-Windows-x64-Setup.exe",
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/Cinqic-Calculator-Windows-x64-Portable.zip",
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/Cinqic-Calculator-Linux-x86_64.tar.gz",
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/SHA256SUMS.txt",
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/tag/{DESKTOP_TAG}",
-    "https://github.com/Cinqic/Cinqic-Calculator",
-    f"https://github.com/Cinqic/Juniper-App/releases/tag/{JUNIPER_TAG}",
-    f"https://github.com/Cinqic/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-windows-x86_64.msi",
-    f"https://github.com/Cinqic/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-android-universal.apk",
-    f"https://github.com/Cinqic/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-linux-x86_64.AppImage",
-    f"https://github.com/Cinqic/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-linux-x86_64.deb",
-    f"https://github.com/Cinqic/Juniper-App/releases/download/{JUNIPER_TAG}/SHA256SUMS.txt",
-    "https://github.com/Cinqic/Juniper-App",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/Cinqic-Calculator-Windows-x64-Setup.exe",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/Cinqic-Calculator-Windows-x64-Portable.zip",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/Cinqic-Calculator-Linux-x86_64.tar.gz",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/download/{DESKTOP_TAG}/SHA256SUMS.txt",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/tag/{DESKTOP_TAG}",
+    "https://github.com/Cinqic-Research/Cinqic-Calculator",
+    f"https://github.com/Cinqic-Research/Juniper-App/releases/tag/{JUNIPER_TAG}",
+    f"https://github.com/Cinqic-Research/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-windows-x86_64.msi",
+    f"https://github.com/Cinqic-Research/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-android-universal.apk",
+    f"https://github.com/Cinqic-Research/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-linux-x86_64.AppImage",
+    f"https://github.com/Cinqic-Research/Juniper-App/releases/download/{JUNIPER_TAG}/Juniper-{JUNIPER_VERSION}-linux-x86_64.deb",
+    f"https://github.com/Cinqic-Research/Juniper-App/releases/download/{JUNIPER_TAG}/SHA256SUMS.txt",
+    "https://github.com/Cinqic-Research/Juniper-App",
 ]
 
 # Checked only if present in ANDROID_RELEASE_URLS at call time (see main());
 # kept as a separate, optional list so this script still passes before the
 # Android release exists.
 ANDROID_RELEASE_URLS = [
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/download/{ANDROID_TAG}/Cinqic-Calculator-Android.apk",
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/download/{ANDROID_TAG}/SHA256SUMS-Android.txt",
-    f"https://github.com/Cinqic/Cinqic-Calculator/releases/tag/{ANDROID_TAG}",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/download/{ANDROID_TAG}/Cinqic-Calculator-Android.apk",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/download/{ANDROID_TAG}/SHA256SUMS-Android.txt",
+    f"https://github.com/Cinqic-Research/Cinqic-Calculator/releases/tag/{ANDROID_TAG}",
 ]
 
 
@@ -64,7 +64,7 @@ SITE_ROOT = Path(__file__).resolve().parent.parent
 # rather than hardcoded, so a new product page cannot ship a dead release link
 # without this check noticing it.
 RELEASE_LINK_PATTERN = re.compile(
-    r"https://github\.com/Cinqic/[^\"'\s]*/releases(?:/[^\"'\s]*)?"
+    r"https://github\.com/Cinqic(?:-Research)?/[^\"'\s]*/releases(?:/[^\"'\s]*)?"
 )
 
 

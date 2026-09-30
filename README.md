@@ -1,8 +1,9 @@
 # Cinqic.com
 
-The official static website for Cinqic. The information architecture keeps
-Juniper as the flagship, groups standalone software under Apps, and keeps the
-current research record separate from product routes.
+The official static website for Cinqic, a small software and research company.
+The information architecture keeps Juniper as the flagship, groups standalone
+software under Apps, and keeps the research record separate from product
+routes.
 
 ## Stack and commands
 
@@ -16,7 +17,8 @@ python -m http.server 8000 --directory .
 ```
 
 `verify_site.py` checks the local site structure, metadata, navigation, route
-invariants, internal links, and durable content guardrails. Release-link
+invariants, internal links, and durable content guardrails, and CI runs it on
+every push and pull request. Release-link
 verification depends on GitHub being reachable and checks every release URL
 advertised in the HTML.
 
@@ -25,9 +27,8 @@ advertised in the HTML.
 - `/` — Cinqic overview, with Juniper as the flagship attraction.
 - `/juniper/` — current Juniper implementation, published-release state, and
   platform limitations.
-- `/apps/` — Juniper, Cinqic Notes, and Cinqic Calculator.
-- `/notes/` — Cinqic Notes overview and its development-paused status.
-- `/research/` — current and completed research overview.
+- `/apps/` — Juniper and Cinqic Calculator.
+- `/research/` — AAA and Juniper LM 1 (current), and completed research.
 - `/calculator/` — Cinqic Calculator downloads and product details.
 - `/privacy/` — website and product-privacy boundaries.
 

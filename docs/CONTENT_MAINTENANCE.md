@@ -19,9 +19,9 @@ Keep these distinctions visible:
 ## Site structure
 
 `index.html` is the Cinqic overview and keeps Juniper as the flagship.
-`apps/index.html` is the consumer-app catalog. `notes/index.html` describes
-Cinqic Notes, whose development is paused. `research/index.html` summarizes
-current and completed research. `juniper/index.html` and
+`apps/index.html` is the software catalog (Juniper and Cinqic Calculator).
+`research/index.html` summarizes current research (AAA, Juniper LM 1) and
+completed research. `juniper/index.html` and
 `calculator/index.html` hold detailed product information.
 `privacy/index.html` describes website and product privacy boundaries.
 
@@ -35,11 +35,12 @@ in `assets/js/site.js`.
 When a release changes, update only the claims and pinned links supported by
 the current GitHub Release. Keep independently versioned platform releases
 independent, especially for Cinqic Calculator. For Juniper, separate the
-current source candidate from the latest published prerelease. For Notes, do
-not add a version, download, platform, sync, AI, cloud, or collaboration claim
-until the canonical repository and release state support it. Notes is paused,
-not retired: keep it in the Apps catalog, and do not describe it as in active
-development until its canonical repository records that development resumed.
+current source candidate from the latest published prerelease; open pull
+requests are not shipped behavior. For research, summarize the current phase
+and its limits from the repository's own README and research log, and never
+upgrade a result (for example, a development result to a confirmation, or a
+plan to an implementation). Cinqic Notes is not presented on the site, and
+private repositories are not linked or described.
 
 ## Metadata and verification
 
