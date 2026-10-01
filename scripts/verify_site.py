@@ -2,6 +2,7 @@
 
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 import sys
 
 
@@ -10,7 +11,6 @@ PAGES = [
     ROOT / "index.html",
     ROOT / "juniper/index.html",
     ROOT / "apps/index.html",
-    ROOT / "notes/index.html",
     ROOT / "research/index.html",
     ROOT / "calculator/index.html",
     ROOT / "privacy/index.html",
@@ -31,7 +31,6 @@ PUBLIC_ROUTES = [
     "/",
     "/juniper/",
     "/apps/",
-    "/notes/",
     "/research/",
     "/calculator/",
     "/privacy/",
@@ -40,7 +39,6 @@ NAV_LINKS = ["/juniper/", "/apps/", "/research/", "/privacy/"]
 CURRENT_MARKERS = {
     "juniper/index.html": 'href="/juniper/" aria-current="page"',
     "apps/index.html": 'href="/apps/" aria-current="page"',
-    "notes/index.html": 'href="/apps/" aria-current="page"',
     "research/index.html": 'href="/research/" aria-current="page"',
     "calculator/index.html": 'href="/apps/" aria-current="page"',
     "privacy/index.html": 'href="/privacy/" aria-current="page"',
@@ -128,6 +126,26 @@ def main() -> int:
         if term.lower() in public.lower():
             return fail(f"obsolete or insecure public text: {term}")
 
+    # Cinqic Notes was removed from the site on 2026-09-30. Reintroducing it
+    # requires an explicit site-policy change, not an accidental edit.
+    for term in ["Cinqic Notes", "Cinqic-Notes", "/notes/"]:
+        if term.lower() in public.lower():
+            return fail(f"Cinqic Notes is not part of the site: {term}")
+    if (ROOT / "notes").exists():
+        return fail("the /notes/ route must not exist")
+
+    # Private repositories are not published through the site.
+    for term in ["Juniper-Reference-4B", "Juniper Reference 4B"]:
+        if term.lower() in public.lower():
+            return fail(f"private project referenced on the public site: {term}")
+
+    # Active repositories live in Cinqic-Research; only archived historical
+    # repositories that genuinely remain in the old organization may be linked there.
+    historical_old_org = ("Juniper-Encoder", "juniper-math-1")
+    for match in re.finditer(r"github\.com/Cinqic/([A-Za-z0-9._-]+)", public):
+        if match.group(1) not in historical_old_org:
+            return fail(f"stale organization link: {match.group(0)}")
+
     for route in PUBLIC_ROUTES:
         if route not in (ROOT / "sitemap.xml").read_text(encoding="utf-8"):
             return fail(f"missing sitemap route: {route}")
@@ -160,29 +178,26 @@ def main() -> int:
             return fail(f"missing aria-current marker: {name}")
 
     apps = page_text["apps/index.html"]
-    required_apps = ["Juniper", "Cinqic Notes", "Cinqic Calculator"]
+    required_apps = ["Juniper", "Cinqic Calculator"]
     positions = [apps.find(value) for value in required_apps]
     if any(position < 0 for position in positions):
         return fail("Apps page is missing an expected active application")
     if positions != sorted(positions):
-        return fail("Apps page must feature Juniper, Notes, then Calculator in order")
-    if "releases/download" in page_text["notes/index.html"] or "releases/tag" in page_text["notes/index.html"]:
-        return fail("Notes page must not advertise an unreleased download")
-    for name in ["index.html", "apps/index.html", "notes/index.html"]:
-        if "Development paused" not in page_text[name] or "In development" in page_text[name]:
-            return fail(f"{name} must present Cinqic Notes as development paused")
-    if "retired" in page_text["notes/index.html"].lower().replace("not been retired", ""):
-        return fail("Notes page must not present Cinqic Notes as retired")
+        return fail("Apps page must feature Juniper before Calculator")
     if "flagship" not in page_text["index.html"].lower() or 'href="/juniper/"' not in page_text["index.html"]:
         return fail("homepage must keep Juniper represented as the flagship")
     research = page_text["research/index.html"]
-    if "Current research" not in research or "https://github.com/Cinqic/AAA" not in research:
+    if "Current research" not in research or "https://github.com/Cinqic-Research/AAA" not in research:
         return fail("Research page must present AAA as current research")
+    if "aaa.python.v1" not in research or "moving dot on a line and a three-parameter learner" in research:
+        return fail("Research page must describe AAA's current Python phase, not the dot era as current")
+    if "https://github.com/Cinqic-Research/Juniper-LM-1" not in research or "No Juniper LM 1 checkpoint has been trained or released" not in research:
+        return fail("Research page must present Juniper LM 1 with its untrained status")
     if "Retired research" not in research or "Juniper Encoder" not in research:
         return fail("Research page must present Juniper Encoder as retired research")
     if "Completed research" not in research or "Juniper Math 1" not in research:
         return fail("Research page must keep Juniper Math 1 as completed research")
-    print("PASS: pages, metadata, navigation, routes, links, sitemap, flagship hierarchy, paused-project status, and retired-project reference guardrails.")
+    print("PASS: pages, metadata, navigation, routes, links, sitemap, flagship hierarchy, research status, and removed, private, and retired-project guardrails.")
     return 0
 
 

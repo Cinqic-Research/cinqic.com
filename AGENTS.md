@@ -1,12 +1,14 @@
 # Cinqic website instructions
 
-Keep this site static, fast, accessible, and honest. Juniper is the flagship
-software experience. `/apps/` groups consumer applications, `/research/`
-groups research, and `/privacy/` explains the website and product-documentation
-boundaries. Keep `/juniper/`, `/calculator/`, and `/privacy/`
+Keep this site static, fast, accessible, and honest. Cinqic is a small software
+and research company. Juniper is the flagship product, `/apps/` groups
+Cinqic's software, `/research/` groups research, and `/privacy/` explains the
+website and product-documentation boundaries. Keep `/juniper/`, `/calculator/`, and `/privacy/`
 working as public routes.
 
-GitHub is canonical for product facts. Before publishing copy, distinguish
+GitHub is canonical for product facts. Active repositories live in the
+`Cinqic-Research` organization; link there. Retired projects keep links to the
+archived repositories where they actually live. Before publishing copy, distinguish
 current implementation, development candidates, published releases, research
 targets, and retired work. Never claim a release, performance result,
 availability, privacy guarantee, certification, partner, social account, or
@@ -18,9 +20,14 @@ retired historical research and must not be presented as active model projects
 or as released models. Retired projects removed from active public surfaces
 stay removed unless explicit new site policy reverses that decision.
 
-Cinqic Notes development is paused until further notice; it is not retired or
-discontinued. Keep it in `/apps/` and `/notes/` as a paused project with no public
-release, and do not present it as in active development or as retired.
+AAA and Juniper LM 1 are the current public research projects. Private
+repositories, including Juniper Reference 4B, are not described or linked on
+this site without a separate publication decision.
+
+Cinqic Notes is not part of the site. Do not add it back to any page, route,
+sitemap entry, or navigation unless site policy explicitly changes; the
+verifier enforces this. Removing it from the site does not change the archived
+repository's own status.
 
 Use semantic HTML, keyboard-accessible interactions, visible focus states,
 responsive layouts, and reduced-motion support. Do not add trackers, ads,
