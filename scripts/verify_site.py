@@ -135,7 +135,12 @@ def main() -> int:
         return fail("the /notes/ route must not exist")
 
     # Private repositories are not published through the site.
-    for term in ["Juniper-Reference-4B", "Juniper Reference 4B"]:
+    for term in [
+        "Juniper-Reference-4B",
+        "Juniper Reference 4B",
+        "Juniper-LM-1.1",
+        "Juniper LM 1.1",
+    ]:
         if term.lower() in public.lower():
             return fail(f"private project referenced on the public site: {term}")
 
@@ -193,6 +198,10 @@ def main() -> int:
         return fail("Research page must describe AAA's current Python phase, not the dot era as current")
     if "https://github.com/Cinqic-Research/Juniper-LM-1" not in research or "No Juniper LM 1 checkpoint has been trained or released" not in research:
         return fail("Research page must present Juniper LM 1 with its untrained status")
+    if "remains a separate GPT-2 modernization research study" not in research:
+        return fail("Research page must describe Juniper LM 1 as separate research")
+    if "intended to become AAA" in research.lower():
+        return fail("Research page contains the obsolete Juniper LM 1 to AAA plan")
     if "Retired research" not in research or "Juniper Encoder" not in research:
         return fail("Research page must present Juniper Encoder as retired research")
     if "Completed research" not in research or "Juniper Math 1" not in research:
