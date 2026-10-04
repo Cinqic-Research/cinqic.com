@@ -194,8 +194,10 @@ def main() -> int:
     research = page_text["research/index.html"]
     if "Current research" not in research or "https://github.com/Cinqic-Research/AAA" not in research:
         return fail("Research page must present AAA as current research")
-    if "aaa.python.v1" not in research or "moving dot on a line and a three-parameter learner" in research:
-        return fail("Research page must describe AAA's current Python phase, not the dot era as current")
+    if "aaa.erudition.v0" not in research or "moving dot on a line and a three-parameter learner" in research:
+        return fail("Research page must describe AAA's current Erudition Model phase, not the dot era as current")
+    if "Python programming is the current specialization" in research:
+        return fail("Research page presents AAA's historical Python phase as current")
     lm1_section_match = re.search(
         r'<section[^>]*aria-labelledby="lm1-title".*?</section>', research, re.DOTALL
     )
