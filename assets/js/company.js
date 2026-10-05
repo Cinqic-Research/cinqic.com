@@ -35,9 +35,8 @@
       },
       juniperLM1: {
         name: "Juniper LM 1",
-        category: "research",
-        status: "Active research, conversational-first; no checkpoint trained or released",
-        repository: "https://github.com/Cinqic-Research/Juniper-LM-1",
+        category: "retired research",
+        status: "Retired 2026-10-04; historical research; no checkpoint trained or released",
       },
       juniperEncoder: {
         name: "Juniper Encoder",

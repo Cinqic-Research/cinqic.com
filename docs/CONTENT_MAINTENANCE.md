@@ -20,8 +20,8 @@ Keep these distinctions visible:
 
 `index.html` is the Cinqic overview and keeps Juniper as the flagship.
 `apps/index.html` is the software catalog (Juniper and Cinqic Calculator).
-`research/index.html` summarizes current research (AAA, Juniper LM 1) and
-completed research. `juniper/index.html` and
+`research/index.html` summarizes AAA's current research, retired Juniper LM 1,
+and completed research. `juniper/index.html` and
 `calculator/index.html` hold detailed product information.
 `privacy/index.html` describes website and product privacy boundaries.
 
@@ -39,8 +39,10 @@ current source candidate from the latest published prerelease; open pull
 requests are not shipped behavior. For research, summarize the current phase
 and its limits from the repository's own README and research log, and never
 upgrade a result (for example, a development result to a confirmation, or a
-plan to an implementation). Cinqic Notes is not presented on the site, and
-private repositories are not linked or described.
+plan to an implementation). Cinqic Notes is not presented on the site. A
+concise Juniper LM 1 history may retain previously public facts, but must not
+link to its now-private repository or expose private repository contents.
+Private repositories are not linked or described.
 
 ## Metadata and verification
 

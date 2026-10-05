@@ -7,8 +7,8 @@ website and product-documentation boundaries. Keep `/juniper/`, `/calculator/`, 
 working as public routes.
 
 GitHub is canonical for product facts. Active repositories live in the
-`Cinqic-Research` organization; link there. Retired projects keep links to the
-archived repositories where they actually live. Before publishing copy, distinguish
+`Cinqic-Research` organization; link there. Link to a retired research
+repository only while it remains public. Before publishing copy, distinguish
 current implementation, development candidates, published releases, research
 targets, and retired work. Never claim a release, performance result,
 availability, privacy guarantee, certification, partner, social account, or
@@ -20,9 +20,12 @@ retired historical research and must not be presented as active model projects
 or as released models. Retired projects removed from active public surfaces
 stay removed unless explicit new site policy reverses that decision.
 
-AAA and Juniper LM 1 are the current public research projects. Private
-repositories, including Juniper Reference 4B, are not described or linked on
-this site without a separate publication decision.
+AAA is the active public research project. Juniper LM 1 is retired historical
+research and may appear on `/research/` only as a concise summary of facts that
+were already public. Do not link its private repository or publish private
+repository contents. Other private research repositories, including Juniper
+Reference 4B, are not described or linked without a separate publication
+decision.
 
 Cinqic Notes is not part of the site. Do not add it back to any page, route,
 sitemap entry, or navigation unless site policy explicitly changes; the

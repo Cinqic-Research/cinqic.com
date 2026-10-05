@@ -196,10 +196,53 @@ def main() -> int:
         return fail("Research page must present AAA as current research")
     if "aaa.python.v1" not in research or "moving dot on a line and a three-parameter learner" in research:
         return fail("Research page must describe AAA's current Python phase, not the dot era as current")
-    if "https://github.com/Cinqic-Research/Juniper-LM-1" not in research or "No Juniper LM 1 checkpoint has been trained or released" not in research:
-        return fail("Research page must present Juniper LM 1 with its untrained status")
-    if "remains a separate GPT-2 modernization research study" not in research:
-        return fail("Research page must describe Juniper LM 1 as separate research")
+    lm1_section_match = re.search(
+        r'<section[^>]*aria-labelledby="lm1-title".*?</section>', research, re.DOTALL
+    )
+    if lm1_section_match is None:
+        return fail("Research page must retain the Juniper LM 1 historical record")
+    lm1_section = lm1_section_match.group(0)
+    if "Retired research" not in lm1_section or "October 4, 2026 (America/New_York)" not in lm1_section:
+        return fail("Research page must identify Juniper LM 1 as retired with its effective date")
+    if "No Juniper LM 1 checkpoint was trained or released" not in lm1_section:
+        return fail("Research page must preserve Juniper LM 1's untrained status")
+    if "JuniperBench-Code v1.2 provenance" not in lm1_section:
+        return fail("Research page must retain the benchmark's historical provenance")
+    if "https://github.com/Cinqic-Research/Juniper-LM-1" in research:
+        return fail("Research page must not link to the private Juniper LM 1 repository")
+    company = (ROOT / "assets/js/company.js").read_text(encoding="utf-8")
+    lm1_company_match = re.search(r"juniperLM1:\s*{(.*?)}", company, re.DOTALL)
+    if lm1_company_match is None:
+        return fail("company metadata must retain Juniper LM 1's retired status")
+    lm1_company = lm1_company_match.group(1)
+    if 'category: "retired research"' not in lm1_company or 'status: "Retired 2026-10-04;' not in lm1_company:
+        return fail("company metadata must mark Juniper LM 1 as retired research")
+    if "repository:" in lm1_company:
+        return fail("company metadata must not link to the private Juniper LM 1 repository")
+    policy_docs = {
+        "README.md": (ROOT / "README.md").read_text(encoding="utf-8"),
+        "AGENTS.md": (ROOT / "AGENTS.md").read_text(encoding="utf-8"),
+        "docs/CONTENT_MAINTENANCE.md": (ROOT / "docs/CONTENT_MAINTENANCE.md").read_text(encoding="utf-8"),
+    }
+    normalized_policy_docs = {
+        name: re.sub(r"\s+", " ", content)
+        for name, content in policy_docs.items()
+    }
+    if "retired Juniper LM 1" not in policy_docs["README.md"]:
+        return fail("README must classify Juniper LM 1 as retired research")
+    if "AAA is the active public research project" not in normalized_policy_docs["AGENTS.md"]:
+        return fail("site instructions must keep AAA as the active public research project")
+    if "Juniper LM 1 is retired historical research" not in normalized_policy_docs["AGENTS.md"]:
+        return fail("site instructions must classify Juniper LM 1 as retired history")
+    if "Juniper LM 1" not in normalized_policy_docs["docs/CONTENT_MAINTENANCE.md"] or "now-private repository" not in normalized_policy_docs["docs/CONTENT_MAINTENANCE.md"]:
+        return fail("content policy must keep LM 1 historical and its private link removed")
+    for stale in [
+        "AAA and Juniper LM 1 are the current public research projects",
+        "research (AAA, Juniper LM 1) and",
+        "Juniper LM 1 (current)",
+    ]:
+        if stale in "\n".join(normalized_policy_docs.values()):
+            return fail("site documentation still describes Juniper LM 1 as current research")
     if "intended to become AAA" in research.lower():
         return fail("Research page contains the obsolete Juniper LM 1 to AAA plan")
     if "Retired research" not in research or "Juniper Encoder" not in research:
