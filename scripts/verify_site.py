@@ -199,6 +199,9 @@ def main() -> int:
     if "Python programming is the current specialization" in research:
         return fail("Research page presents AAA's historical Python phase as current")
     required_aaa_claims = [
+        "an original Cinqic language model under separate development",
+        "gpt-oss-20b as its immutable research language-model backend",
+        "the original Juniper 1 model has not been integrated into AAA",
         "host software validates each request, evaluates candidate changes, controls stored state, and performs retention or rollback.",
         "under the frozen confirmation criteria",
         "the declared size tie rule would have selected the smaller 1.020692M GRU",

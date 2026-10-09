@@ -30,7 +30,7 @@
       aaa: {
         name: "AAA",
         category: "research",
-        status: "Active experimental research; current phase aaa.erudition.v0 (Juniper 1 Erudition Model)",
+        status: "Active experimental research; aaa.erudition.v0 proposal under independent review",
         repository: "https://github.com/Cinqic-Research/AAA",
       },
       juniperLM1: {
