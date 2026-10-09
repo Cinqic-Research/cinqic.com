@@ -194,8 +194,27 @@ def main() -> int:
     research = page_text["research/index.html"]
     if "Current research" not in research or "https://github.com/Cinqic-Research/AAA" not in research:
         return fail("Research page must present AAA as current research")
-    if "aaa.python.v1" not in research or "moving dot on a line and a three-parameter learner" in research:
-        return fail("Research page must describe AAA's current Python phase, not the dot era as current")
+    if "aaa.erudition.v0" not in research or "moving dot on a line and a three-parameter learner" in research:
+        return fail("Research page must describe AAA's current Erudition Model phase, not the dot era as current")
+    if "Python programming is the current specialization" in research:
+        return fail("Research page presents AAA's historical Python phase as current")
+    required_aaa_claims = [
+        "an original Cinqic language model under separate development",
+        "gpt-oss-20b as its immutable research language-model backend",
+        "the original Juniper 1 model has not been integrated into AAA",
+        "host software validates each request, evaluates candidate changes, controls stored state, and performs retention or rollback.",
+        "under the frozen confirmation criteria",
+        "the declared size tie rule would have selected the smaller 1.020692M GRU",
+        "the 1.2597M transformer went to confirmation",
+        "does not establish rule-compliant architecture selection",
+        "the 1.2597M confirmed transformer is necessary",
+    ]
+    research_lower = research.lower()
+    for claim in required_aaa_claims:
+        if claim.lower() not in research_lower:
+            return fail(f"Research page is missing a material AAA claim boundary: {claim}")
+    if "under rules fixed in advance" in research_lower or "1.2597m selected model" in research_lower:
+        return fail("Research page implies rule-compliant selection or overstated preregistration")
     lm1_section_match = re.search(
         r'<section[^>]*aria-labelledby="lm1-title".*?</section>', research, re.DOTALL
     )
