@@ -11,8 +11,8 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-DESKTOP_TAG = "v1.1.0"
-ANDROID_TAG = "android-v1.1.0"
+DESKTOP_TAG = "v1.1.1"
+ANDROID_TAG = "android-v1.1.1"
 JUNIPER_TAG = "v0.3.0-rc.33"
 JUNIPER_VERSION = JUNIPER_TAG.lstrip("v")
 
