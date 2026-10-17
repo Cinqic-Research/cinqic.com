@@ -13,10 +13,10 @@
       juniper: {
         name: "Juniper",
         category: "app",
-        status: "Published prerelease",
-        publishedVersion: "0.3.0-rc.33",
+        status: "Published alpha prerelease (Juniper 0.4.0-Alpha)",
+        publishedVersion: "0.4.0-alpha.1",
         repository: "https://github.com/Cinqic-Research/Juniper-App",
-        release: "https://github.com/Cinqic-Research/Juniper-App/releases/tag/v0.3.0-rc.33",
+        release: "https://github.com/Cinqic-Research/Juniper-App/releases/tag/v0.4.0-alpha.1",
       },
       calculator: {
         name: "Cinqic Calculator",
