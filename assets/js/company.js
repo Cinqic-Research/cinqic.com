@@ -33,6 +33,13 @@
         status: "Active experimental research; current phase aaa.python.v1",
         repository: "https://github.com/Cinqic-Research/AAA",
       },
+      juniper1Base: {
+        name: "Juniper 1 Base",
+        category: "released model",
+        status: "Released 2026-10-16; 142.77M-parameter base model trained from scratch, Apache-2.0; Juniper 1 R&D closed",
+        repository: "https://github.com/Cinqic-Research/Juniper-1-Base",
+        release: "https://huggingface.co/CinqicX/juniper1-base",
+      },
       juniperLM1: {
         name: "Juniper LM 1",
         category: "retired research",
