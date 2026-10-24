@@ -196,6 +196,11 @@ def main() -> int:
         return fail("Research page must present AAA as current research")
     if "aaa.python.v1" not in research or "moving dot on a line and a three-parameter learner" in research:
         return fail("Research page must describe AAA's current Python phase, not the dot era as current")
+    aaa_section_match = re.search(
+        r'<section[^>]*aria-labelledby="current-title".*?</section>', research, re.DOTALL
+    )
+    if aaa_section_match is None or "paused, not retired" not in aaa_section_match.group(0):
+        return fail("Research page must state that AAA research is paused, not retired")
     lm1_section_match = re.search(
         r'<section[^>]*aria-labelledby="lm1-title".*?</section>', research, re.DOTALL
     )
@@ -219,6 +224,17 @@ def main() -> int:
         return fail("company metadata must mark Juniper LM 1 as retired research")
     if "repository:" in lm1_company:
         return fail("company metadata must not link to the private Juniper LM 1 repository")
+    # Shared metadata must name the same releases the product pages link to.
+    calculator_page = page_text["calculator/index.html"]
+    for key, tag_prefix in (("windowsVersion", "v"), ("linuxVersion", "v"), ("androidVersion", "android-v")):
+        version_match = re.search(rf'{key}: "([^"]+)"', company)
+        if version_match is None:
+            return fail(f"company metadata is missing the Calculator {key}")
+        if f"releases/download/{tag_prefix}{version_match.group(1)}/" not in calculator_page:
+            return fail(f"company metadata Calculator {key} {version_match.group(1)} does not match the download links")
+    juniper_version_match = re.search(r'publishedVersion: "([^"]+)"', company)
+    if juniper_version_match is None or f"releases/tag/v{juniper_version_match.group(1)}" not in page_text["juniper/index.html"]:
+        return fail("company metadata Juniper publishedVersion does not match the Juniper release link")
     policy_docs = {
         "README.md": (ROOT / "README.md").read_text(encoding="utf-8"),
         "AGENTS.md": (ROOT / "AGENTS.md").read_text(encoding="utf-8"),
@@ -230,8 +246,8 @@ def main() -> int:
     }
     if "retired Juniper LM 1" not in policy_docs["README.md"]:
         return fail("README must classify Juniper LM 1 as retired research")
-    if "AAA is the active public research project" not in normalized_policy_docs["AGENTS.md"]:
-        return fail("site instructions must keep AAA as the active public research project")
+    if "AAA is Cinqic's current public research program" not in normalized_policy_docs["AGENTS.md"]:
+        return fail("site instructions must keep AAA as the current public research program")
     if "Juniper LM 1 is retired historical research" not in normalized_policy_docs["AGENTS.md"]:
         return fail("site instructions must classify Juniper LM 1 as retired history")
     if "Juniper LM 1" not in normalized_policy_docs["docs/CONTENT_MAINTENANCE.md"] or "now-private repository" not in normalized_policy_docs["docs/CONTENT_MAINTENANCE.md"]:

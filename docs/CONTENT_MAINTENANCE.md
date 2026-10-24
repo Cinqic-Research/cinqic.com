@@ -20,8 +20,9 @@ Keep these distinctions visible:
 
 `index.html` is the Cinqic overview and keeps Juniper as the flagship.
 `apps/index.html` is the software catalog (Juniper and Cinqic Calculator).
-`research/index.html` summarizes AAA's current research, retired Juniper LM 1,
-and completed research. `juniper/index.html` and
+`research/index.html` summarizes the released Juniper 1 Base model, AAA
+(current; its research is paused), retired Juniper LM 1, and completed
+research. `juniper/index.html` and
 `calculator/index.html` hold detailed product information.
 `privacy/index.html` describes website and product privacy boundaries.
 

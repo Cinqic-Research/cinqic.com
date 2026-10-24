@@ -15,12 +15,18 @@ availability, privacy guarantee, certification, partner, social account, or
 download without current repository or release evidence. Do not advertise
 uncommitted work from another repository.
 
-AAA is the active research project. Juniper Encoder and Juniper Math 1 are
-retired historical research and must not be presented as active model projects
+AAA is Cinqic's current research program; its research is paused (see
+below). Juniper Encoder and Juniper Math 1 are retired historical research and must not be presented as active model projects
 or as released models. Retired projects removed from active public surfaces
 stay removed unless explicit new site policy reverses that decision.
 
-AAA is the active public research project. Juniper LM 1 is retired historical
+AAA is Cinqic's current public research program. Its research is temporarily
+paused while Cinqic focuses on Juniper and its other software; it is not
+retired, and its published results and limits stand as recorded. Do not
+describe new AAA experiments as under way unless the owner resumes the
+research. Juniper 1 Base is a released base model, separate from AAA and from
+the Juniper app: its R&D closed on 2026-10-16 and it was published on
+2026-10-17 (US Eastern). Juniper LM 1 is retired historical
 research and may appear on `/research/` only as a concise summary of facts that
 were already public. Do not link its private repository or publish private
 repository contents. Other private research repositories, including Juniper
@@ -44,12 +50,13 @@ or product copy change. Review all internal links and metadata before commit.
 
 ## Review roles
 
-From 2026-10-16:
+From 2026-10-24, by the owner's direction (the 2026-10-16 assignment named
+Claude Fable 5.1 as reviewer):
 
 - **Implementer: Claude Opus 5.5.** Builds, tests, and documents changes, and
   prepares the evidence. It may fix defects, but it never certifies its own
   work as independently reviewed.
-- **Independent technical reviewer: Claude Fable 5.1,** in a separate session
+- **Independent technical reviewer: GPT-6.1 Sol,** in a separate session
   with a fresh context. It reviews the exact head and the primary evidence
   itself, and may reject work, require changes, or withhold approval. If it
   authored, repaired, or directed the exact change, it says so and the change
@@ -58,10 +65,11 @@ From 2026-10-16:
   irreversible operations, and policy exceptions. A technical approval is not
   owner authorization.
 
-Both models are Anthropic's, so this is separate-session review, not
-vendor-independent assurance. Reviews by earlier reviewers (GPT-6 Luna, GPT-6
-and GPT-5.6 Sol, Codex) remain historical records. This section does not
-change any review gate.
+A named reviewer is an assignment, not evidence that a review took place;
+only a recorded review of the exact head counts. Earlier reviews (Claude
+Fable 5.1, GPT-6 Luna, GPT-6 and GPT-5.6 Sol, Codex) remain historical
+records under their original attribution. This section does not change any
+review gate.
 
 Publication still needs the owner's decision. A technical review checks
 factual accuracy, privacy, and accessibility against the actual releases.
