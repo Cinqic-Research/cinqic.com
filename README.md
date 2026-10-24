@@ -28,7 +28,8 @@ advertised in the HTML.
 - `/juniper/` — current Juniper implementation, published-release state, and
   platform limitations.
 - `/apps/` — Juniper and Cinqic Calculator.
-- `/research/` — AAA (current), retired Juniper LM 1, and completed research.
+- `/research/` — the released Juniper 1 Base model, AAA (current; research
+  paused), retired Juniper LM 1, and completed research.
 - `/calculator/` — Cinqic Calculator downloads and product details.
 - `/privacy/` — website and product-privacy boundaries.
 
